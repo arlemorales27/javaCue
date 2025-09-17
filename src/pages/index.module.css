@@ -1,23 +1,171 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
-.heroBanner {
-  padding: 4rem 0;
+.heroUnified {
+  padding: 5rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
+
+  background: linear-gradient(135deg, #f7f9fc, #ffffff);
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+[data-theme='dark'] .heroUnified {
+  background: linear-gradient(135deg, #1a1c1f, #000000);
+}
+
+.heroLogoWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  animation: fadeInDown 1.2s ease forwards;
+}
+
+.heroLogo {
+  max-height: 110px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+}
+
+.heroTitle {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-primary);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 3rem;
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.courseContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.courseText {
+  flex: 1;
+  min-width: 280px;
+  padding: 1rem 2rem;
+  text-align: left;
+  animation: fadeInLeft 1s ease forwards;
+}
+
+.courseText h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+.courseText p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.courseText .accent {
+  color: var(--color-accent-text, #d10013);
+  font-weight: bold;
+}
+
+.courseImages {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 1s ease forwards;
+}
+
+.courseLogo {
+  max-width: 160px;
+  height: auto;
 }
 
 .buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.ctaButton {
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 2rem;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.ctaButton:hover {
+  background: var(--ifm-color-primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 63, 112, 0.25);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .courseContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .courseText {
+    text-align: center;
+  }
 }

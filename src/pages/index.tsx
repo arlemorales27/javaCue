@@ -1,28 +1,53 @@
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx(styles.heroUnified)}>
       <div className="container">
-        <Heading as="h1" className="hero__title">
+        <div className={styles.heroLogoWrapper}>
+          <img
+            src="/img/logo.png"
+            alt="Universidad Alexander von Humboldt"
+            className={styles.heroLogo}
+          />
+        </div>
+        <Heading as="h1" className={styles.heroTitle}>
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
+        <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+
+        <div className={styles.courseContent}>
+          <div className={styles.courseText}>
+            <h2>Enfoque del curso</h2>
+            <p>
+              Este curso de <strong>Programación 1</strong> se centrará en el 
+              aprendizaje de conceptos fundamentales de la programación utilizando 
+              <span className={styles.accent}> Java</span> como lenguaje principal.
+            </p>
+            <div className={styles.buttons}>
+              <Link
+                className={clsx('button button--lg', styles.ctaButton)}
+                to="/docs/intro"
+              >
+                Empezar curso 🚀
+              </Link>
+            </div>
+          </div>
+          <div className={styles.courseImages}>
+            <img
+              src="/img/java-logo.png"
+              alt="Java Logo"
+              className={styles.courseLogo}
+            />
+          </div>
         </div>
       </div>
     </header>
@@ -30,15 +55,13 @@ function HomepageHeader() {
 }
 
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`${siteConfig.title}`}
+      description="Curso de Programación 1 - Universidad Alexander von Humboldt"
+    >
       <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
     </Layout>
   );
 }
