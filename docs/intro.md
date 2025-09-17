@@ -2,46 +2,41 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introducción
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Bienvenido al curso de **Programación 1** de la **Universidad Alexander von Humboldt**.  
+Este espacio digital servirá como apoyo académico para acompañar tu proceso de aprendizaje en la programación de computadores.
 
-## Getting Started
+## Objetivos del curso
 
-Get started by **creating a new site**.
+- Introducir los fundamentos de la programación estructurada.  
+- Comprender los conceptos básicos de algoritmia y lógica computacional.  
+- Desarrollar programas en **Java**, aplicando buenas prácticas de codificación.  
+- Fomentar la capacidad de resolución de problemas mediante ejercicios prácticos y proyectos.  
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Metodología
 
-### What you'll need
+El curso se desarrollará de forma **secuencial**, abordando los temas de manera progresiva: desde los conceptos más básicos hasta la implementación de programas completos.  
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+Cada temática incluirá:
+- **Explicación teórica.**
+- **Ejemplos prácticos en Java.**
+- **Ejercicios y proyectos** para afianzar los conocimientos.
 
-## Generate a new site
+## Evaluación
 
-Generate a new Docusaurus site using the **classic template**.
+La evaluación será continua e incluirá:
+- Tareas y ejercicios individuales.  
+- Proyectos integradores.  
+- Exámenes parciales y finales.  
 
-The classic template will automatically be added to your project after you run the command:
+## Tecnologías utilizadas
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+Durante el curso trabajaremos principalmente con:
+- **Lenguaje:** Java.  
+- **Entorno de desarrollo:** IntelliJ IDEA.
+- **Plataforma de apoyo:** Este sitio con materiales, ejemplos y guías.
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+---
 
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+✨ ¡Prepárate para iniciar tu camino en el mundo de la programación!
