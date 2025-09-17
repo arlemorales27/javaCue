@@ -13,7 +13,7 @@ const config: Config = {
   },
 
   url: 'https://arlemorales27.github.io',
-  baseUrl: '/javaCue',
+  baseUrl: '/',
 
 
   organizationName: 'cue',
