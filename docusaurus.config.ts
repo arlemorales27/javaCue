@@ -7,7 +7,6 @@ const config: Config = {
   tagline: 'Curso de Programación 1 Coorporación Universitaria Empresarial Alexander von Humboldt',
   favicon: 'img/favicon.ico',
 
-  // CONFIGURACIÓN CRÍTICA para GitHub Pages
   url: 'https://arlemorales27.github.io',
   baseUrl: '/javaCue/',
 
@@ -28,7 +27,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          routeBasePath: '/', // Docs en la raíz
         },
         blog: {
           showReadingTime: true,
