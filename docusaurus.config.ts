@@ -7,26 +7,20 @@ const config: Config = {
   tagline: 'Curso de Programación 1 Coorporación Universitaria Empresarial Alexander von Humboldt',
   favicon: 'img/favicon.ico',
 
-  future: {
-    v4: true,
-  },
+  future: { v4: true },
 
-  // ✅ GitHub Pages (Project Pages)
+  // GitHub Pages (Project Pages)
   url: 'https://arlemorales27.github.io',
-  baseUrl: '/javaCue/',                // ✅ importante: empieza y termina con "/"
+  baseUrl: '/javaCue/',
 
-  // ✅ Tu usuario y repo reales
-  organizationName: 'arlemorales27',   // ✅
-  projectName: 'javaCue',  
-  trailingSlash: false, // ✅
+  organizationName: 'arlemorales27',
+  projectName: 'javaCue',
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+  i18n: { defaultLocale: 'en', locales: ['en'] },
 
   presets: [
     [
@@ -34,12 +28,14 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl:
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
           feedOptions: { type: ['rss', 'atom'], xslt: true },
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl:
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -88,3 +84,4 @@ const config: Config = {
 };
 
 export default config;
+
