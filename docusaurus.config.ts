@@ -1,5 +1,5 @@
-import { themes } from 'prism-react-renderer';
-import type { Config } from '@docusaurus/types';
+import {themes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
@@ -7,39 +7,33 @@ const config: Config = {
   tagline: 'Curso de Programación 1 Coorporación Universitaria Empresarial Alexander von Humboldt',
   favicon: 'img/favicon.ico',
 
-  // REMOVE THIS LINE - Está causando conflicto
-  // future: { v4: true },
-
+  // CONFIGURACIÓN CRÍTICA para GitHub Pages
   url: 'https://arlemorales27.github.io',
   baseUrl: '/javaCue/',
 
   organizationName: 'arlemorales27',
   projectName: 'javaCue',
-  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  i18n: { defaultLocale: 'en', locales: ['en'] },
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es'],
+  },
 
   presets: [
     [
       'classic',
       {
-        docs: { 
+        docs: {
           sidebarPath: './sidebars.ts',
-          // Agrega esta configuración
-          routeBasePath: '/docs', // Esto asegura que la ruta base sea /docs
+          routeBasePath: '/', // Docs en la raíz
         },
         blog: {
           showReadingTime: true,
-          feedOptions: { type: ['rss', 'atom'], xslt: true },
-          // Simplifica estas opciones
-          onInlineTags: 'ignore',
-          onInlineAuthors: 'ignore',
-          onUntruncatedBlogPosts: 'ignore',
         },
-        theme: { 
+        theme: {
           customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
@@ -49,48 +43,66 @@ const config: Config = {
   themeConfig: {
     image: 'img/logo.png',
     navbar: {
-      title: '',
-      logo: { alt: 'CUE Logo', src: 'img/logo.png' },
+      title: 'Programación 1',
+      logo: {
+        alt: 'CUE Logo',
+        src: 'img/logo.png',
+      },
       items: [
-        { 
-          type: 'docSidebar', 
-          sidebarId: 'tutorialSidebar', 
-          position: 'left', 
-          label: 'Temáticas' 
+        {
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Temáticas',
         },
-        { 
-          to: '/docs/recursos', 
-          label: 'Recursos', 
-          position: 'left' 
+        {
+          to: '/recursos',
+          label: 'Recursos',
+          position: 'left',
         },
-        // Agrega el blog al navbar si lo usas
-        { to: '/blog', label: 'Blog', position: 'left' },
+        {
+          to: '/blog',
+          label: 'Blog',
+          position: 'left',
+        },
       ],
     },
     footer: {
       style: 'dark',
       links: [
         {
-          title: 'Community',
+          title: 'Comunidad',
           items: [
-            { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/docusaurus' },
-            { label: 'Discord', href: 'https://discordapp.com/invite/docusaurus' },
-            { label: 'X', href: 'https://x.com/docusaurus' },
+            {
+              label: 'Stack Overflow',
+              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+            },
+            {
+              label: 'Discord',
+              href: 'https://discordapp.com/invite/docusaurus',
+            },
           ],
         },
         {
-          title: 'More',
+          title: 'Más',
           items: [
-            { label: 'Blog', to: '/blog' },
-            { label: 'GitHub', href: 'https://github.com/facebook/docusaurus' },
+            {
+              label: 'Blog',
+              to: '/blog',
+            },
+            {
+              label: 'GitHub',
+              href: 'https://github.com/facebook/docusaurus',
+            },
           ],
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} CUE Alexander von Humboldt.`,
     },
-    prism: { 
-      additionalLanguages: ['java'], 
-      theme: themes.oneDark 
+    prism: {
+      theme: themes.github,
+      darkTheme: themes.dracula,
+      additionalLanguages: ['java'],
     },
   } satisfies Preset.ThemeConfig,
 };
