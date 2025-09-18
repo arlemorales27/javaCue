@@ -1,7 +1,6 @@
-import { themes as prismThemes, themes } from 'prism-react-renderer';
+import { themes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-
 
 const config: Config = {
   title: 'Programación 1',
@@ -9,15 +8,16 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
+  // ✅ GitHub Pages (Project Pages)
   url: 'https://arlemorales27.github.io',
-  baseUrl: '/',
+  baseUrl: '/javaCue/',                // ✅ importante: empieza y termina con "/"
 
-
-  organizationName: 'cue',
-  projectName: 'programacion-1',
+  // ✅ Tu usuario y repo reales
+  organizationName: 'arlemorales27',   // ✅
+  projectName: 'javaCue',              // ✅
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -33,29 +33,17 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
+          feedOptions: { type: ['rss', 'atom'], xslt: true },
+          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
         },
-        theme: {
-          customCss: './src/css/custom.css',
-        },
+        theme: { customCss: './src/css/custom.css' },
       } satisfies Preset.Options,
     ],
   ],
@@ -64,22 +52,10 @@ const config: Config = {
     image: 'img/logo.png',
     navbar: {
       title: '',
-      logo: {
-        alt: 'CUE Logo',
-        src: 'img/logo.png',
-      },
+      logo: { alt: 'CUE Logo', src: 'img/logo.png' },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Temáticas',
-        },
-        {
-          to: '/docs/recursos',
-          label: 'Recursos',
-          position: 'left',
-        },
+        { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Temáticas' },
+        { to: '/docs/recursos', label: 'Recursos', position: 'left' },
       ],
     },
     footer: {
@@ -88,39 +64,24 @@ const config: Config = {
         {
           title: 'Community',
           items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
+            { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/docusaurus' },
+            { label: 'Discord', href: 'https://discordapp.com/invite/docusaurus' },
+            { label: 'X', href: 'https://x.com/docusaurus' },
           ],
         },
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
+            { label: 'Blog', to: '/blog' },
+            { label: 'GitHub', href: 'https://github.com/facebook/docusaurus' },
           ],
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} CUE Alexander von Humboldt.`,
     },
     prism: {
-      additionalLanguages: ["java"],
-      theme: themes.oneDark
+      additionalLanguages: ['java'],
+      theme: themes.oneDark,
     },
   } satisfies Preset.ThemeConfig,
 };
