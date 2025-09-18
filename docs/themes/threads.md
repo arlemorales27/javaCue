@@ -20,7 +20,7 @@ La clase principal es **`ExecutorService`**, que provee métodos como:
 
 ### Ejemplo básico con ExecutorService
 
-```java
+```java title="EjemploExecutor.java" showLineNumbers
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -50,7 +50,7 @@ La interfaz **`Callable`** es similar a `Runnable`, pero con una diferencia impo
 
 ### Ejemplo con Callable
 
-```java
+```java title="EjemploCallable.java" showLineNumbers
 import java.util.concurrent.*;
 
 public class EjemploCallable {
@@ -86,7 +86,7 @@ Un objeto **`Future`** representa el resultado de una tarea asíncrona enviada a
 
 ### Ejemplo con Future
 
-```java
+```java title="EjemploFuture.java" showLineNumbers
 import java.util.concurrent.*;
 
 public class EjemploFuture {
