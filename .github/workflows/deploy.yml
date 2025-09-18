@@ -2,7 +2,7 @@ name: Deploy Docusaurus to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [master]   # tu repo usa master
 
 permissions:
   contents: read
@@ -22,8 +22,8 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-      - run: npm ci || npm install
-      - run: npm run build
+      - run: npm ci || npm install        # instala deps con npm (usa package-lock.json)
+      - run: npm run build                # construye Docusaurus -> ./build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -39,3 +39,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
