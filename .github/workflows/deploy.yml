@@ -2,7 +2,7 @@ name: Deploy Docusaurus to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [master]  # CAMBIADO de main a master
   workflow_dispatch:
 
 permissions:
@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: master  # CAMBIADO para asegurar que checkout de master
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -125,6 +127,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
+        if: success()  # Solo subir artifact si el build fue exitoso
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
@@ -136,13 +139,9 @@ jobs:
     
     runs-on: ubuntu-latest
     needs: build
+    if: needs.build.result == 'success'  # Solo deploy si build fue exitoso
     
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-    
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4  # ACTUALIZADO a v4
