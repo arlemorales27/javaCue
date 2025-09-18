@@ -7,7 +7,8 @@ const config: Config = {
   tagline: 'Curso de Programación 1 Coorporación Universitaria Empresarial Alexander von Humboldt',
   favicon: 'img/favicon.ico',
 
-  future: { v4: true },
+  // REMOVE THIS LINE - Está causando conflicto
+  // future: { v4: true },
 
   url: 'https://arlemorales27.github.io',
   baseUrl: '/javaCue/',
@@ -25,15 +26,22 @@ const config: Config = {
     [
       'classic',
       {
-        docs: { sidebarPath: './sidebars.ts' },
+        docs: { 
+          sidebarPath: './sidebars.ts',
+          // Agrega esta configuración
+          routeBasePath: '/docs', // Esto asegura que la ruta base sea /docs
+        },
         blog: {
           showReadingTime: true,
           feedOptions: { type: ['rss', 'atom'], xslt: true },
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+          // Simplifica estas opciones
+          onInlineTags: 'ignore',
+          onInlineAuthors: 'ignore',
+          onUntruncatedBlogPosts: 'ignore',
         },
-        theme: { customCss: './src/css/custom.css' },
+        theme: { 
+          customCss: './src/css/custom.css',
+        },
       } satisfies Preset.Options,
     ],
   ],
@@ -44,8 +52,19 @@ const config: Config = {
       title: '',
       logo: { alt: 'CUE Logo', src: 'img/logo.png' },
       items: [
-        { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Temáticas' },
-        { to: '/docs/recursos', label: 'Recursos', position: 'left' },
+        { 
+          type: 'docSidebar', 
+          sidebarId: 'tutorialSidebar', 
+          position: 'left', 
+          label: 'Temáticas' 
+        },
+        { 
+          to: '/docs/recursos', 
+          label: 'Recursos', 
+          position: 'left' 
+        },
+        // Agrega el blog al navbar si lo usas
+        { to: '/blog', label: 'Blog', position: 'left' },
       ],
     },
     footer: {
@@ -69,7 +88,10 @@ const config: Config = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} CUE Alexander von Humboldt.`,
     },
-    prism: { additionalLanguages: ['java'], theme: themes.oneDark },
+    prism: { 
+      additionalLanguages: ['java'], 
+      theme: themes.oneDark 
+    },
   } satisfies Preset.ThemeConfig,
 };
 
