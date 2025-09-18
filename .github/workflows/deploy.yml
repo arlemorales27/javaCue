@@ -2,7 +2,7 @@ name: Deploy Docusaurus to GitHub Pages
 
 on:
   push:
-    branches: [master]   # ← en tus capturas la rama es master
+    branches: [master]
 
 permissions:
   contents: read
@@ -18,44 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
-
-      - name: Print env & files (debug)
-        run: |
-          node -v
-          npm -v
-          ls -la
-          cat package.json || true
-
-      # Detecta gestor y instala dependencias
-      - name: Install deps
-        run: |
-          if [ -f yarn.lock ]; then
-            echo "Using yarn"
-            corepack enable
-            yarn install --no-progress --non-interactive || yarn install
-          elif [ -f package-lock.json ]; then
-            echo "Using npm ci"
-            npm ci
-          else
-            echo "Using npm install"
-            npm install
-          fi
-
-      # Construye Docusaurus (usa tu script si existe; si no, npx)
-      - name: Build site
-        run: |
-          if npm run | grep -q "build"; then
-            npm run build
-          else
-            npx docusaurus build
-          fi
-
-      - name: Upload artifact (./build)
+          cache: 'npm'
+      - run: npm ci || npm install
+      - run: npm run build
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
