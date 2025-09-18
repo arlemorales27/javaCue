@@ -9,7 +9,6 @@ const config: Config = {
 
   future: { v4: true },
 
-  // GitHub Pages (Project Pages)
   url: 'https://arlemorales27.github.io',
   baseUrl: '/javaCue/',
 
@@ -26,16 +25,10 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
-          sidebarPath: './sidebars.ts',
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+        docs: { sidebarPath: './sidebars.ts' },
         blog: {
           showReadingTime: true,
           feedOptions: { type: ['rss', 'atom'], xslt: true },
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -76,12 +69,8 @@ const config: Config = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} CUE Alexander von Humboldt.`,
     },
-    prism: {
-      additionalLanguages: ['java'],
-      theme: themes.oneDark,
-    },
+    prism: { additionalLanguages: ['java'], theme: themes.oneDark },
   } satisfies Preset.ThemeConfig,
 };
 
 export default config;
-
