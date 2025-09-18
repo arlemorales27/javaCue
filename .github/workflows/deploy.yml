@@ -1,14 +1,18 @@
 name: Deploy Docusaurus to GitHub Pages
+
 on:
   push:
-    branches: [main]   # si tu rama principal es master, cambia a [master]
+    branches: [master]  # <-- usa master porque tus runs son en master
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
   group: "pages"
   cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,13 +21,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'yarn'
-      - run: yarn || npm ci
-      - run: yarn build || npm run build
+          cache: 'npm'
+      # Instala dependencias (usa package-lock si existe; si no, instala normal)
+      - run: npm ci || npm install
+      # Construye Docusaurus -> genera la carpeta build/
+      - run: npm run build
+      # Sube la carpeta build como artefacto para Pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
+
   deploy:
     needs: build
     environment:
@@ -34,3 +42,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
