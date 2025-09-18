@@ -31,14 +31,101 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Docusaurus
-        run: npm run build
+      # ================== DIAGNÓSTICO COMPLETO ==================
+      - name: Debug - Información del sistema
+        run: |
+          echo "=== INFORMACIÓN DEL SISTEMA ==="
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+          echo "Directorio actual: $(pwd)"
+          echo "Usuario: $(whoami)"
+          echo "Memoria libre:"
+          free -h || true
+          echo "=================================="
+
+      - name: Debug - Estructura del proyecto
+        run: |
+          echo "=== ESTRUCTURA DEL PROYECTO ==="
+          echo "Contenido del directorio raíz:"
+          ls -la
+          echo "---"
+          echo "Contenido de docs/ (si existe):"
+          ls -la docs/ || echo "No existe docs/"
+          echo "---"
+          echo "Contenido de src/ (si existe):"
+          ls -la src/ || echo "No existe src/"
+          echo "---"
+          echo "Contenido de static/ (si existe):"
+          ls -la static/ || echo "No existe static/"
+          echo "=================================="
+
+      - name: Debug - Archivos de configuración
+        run: |
+          echo "=== ARCHIVOS DE CONFIGURACIÓN ==="
+          echo "--- package.json ---"
+          cat package.json
+          echo "---"
+          echo "--- docusaurus.config.ts ---"
+          cat docusaurus.config.ts || echo "No se puede leer docusaurus.config.ts"
+          echo "---"
+          echo "--- sidebars.ts ---"
+          cat sidebars.ts || echo "No se puede leer sidebars.ts"
+          echo "---"
+          echo "--- tsconfig.json ---"
+          cat tsconfig.json || echo "No se puede leer tsconfig.json"
+          echo "=================================="
+
+      - name: Debug - Dependencias instaladas
+        run: |
+          echo "=== DEPENDENCIAS INSTALADAS ==="
+          npm list --depth=0 || echo "Error al listar dependencias"
+          echo "=================================="
+
+      - name: Debug - Scripts disponibles
+        run: |
+          echo "=== SCRIPTS DISPONIBLES ==="
+          npm run || echo "Error al listar scripts"
+          echo "=================================="
+
+      - name: Build Docusaurus (con captura de errores detallada)
+        run: |
+          echo "=== INICIANDO BUILD DE DOCUSAURUS ==="
+          # Ejecuta el build capturando TODA la salida
+          npm run build 2>&1 | tee build.log
+          BUILD_EXIT_CODE=${PIPESTATUS[0]}
+          
+          echo "=== RESULTADO DEL BUILD ==="
+          if [ $BUILD_EXIT_CODE -eq 0 ]; then
+            echo "✅ BUILD EXITOSO"
+            echo "Contenido de la carpeta build/:"
+            ls -la build/
+          else
+            echo "❌ BUILD FALLIDO - Código de error: $BUILD_EXIT_CODE"
+            echo "=== ÚLTIMAS 50 LÍNEAS DEL LOG ==="
+            tail -50 build.log
+            echo "=== ERRORES PRINCIPALES ==="
+            grep -i "error\|fail\|warning\|exception" build.log | head -20
+          fi
+          
+          # Sube el log completo como artifact para debugging
+          echo "build.log" >> ./.github/artifact-files.txt
+          exit $BUILD_EXIT_CODE
+
+      - name: Upload build logs for debugging
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-debug-logs
+          path: |
+            build.log
+            ./.github/artifact-files.txt
+          retention-days: 1
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4  # ACTUALIZADO a v4
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3  # ACTUALIZADO a v3
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
 
@@ -49,6 +136,11 @@ jobs:
     
     runs-on: ubuntu-latest
     needs: build
+    
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
     
     steps:
       - name: Deploy to GitHub Pages
