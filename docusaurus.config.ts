@@ -17,7 +17,8 @@ const config: Config = {
 
   // ✅ Tu usuario y repo reales
   organizationName: 'arlemorales27',   // ✅
-  projectName: 'javaCue',              // ✅
+  projectName: 'javaCue',  
+  trailingSlash: false, // ✅
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
