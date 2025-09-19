@@ -9,15 +9,14 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   future: {
-    v4: true, 
+    v4: true,
   },
 
   url: 'https://arlemorales27.github.io',
-  baseUrl: '/',
+  baseUrl: '/javaCue/',
+  organizationName: 'arlemorales27',
+  projectName: 'javaCue',
 
-
-  organizationName: 'cue',
-  projectName: 'programacion-1',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
