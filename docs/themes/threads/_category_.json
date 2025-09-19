@@ -1,0 +1,8 @@
+{
+  "label": "Hilos",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "En Java, un hilo (thread) es una unidad de ejecución dentro de un programa. Permite que varias tareas se realicen de manera concurrente, compartiendo los recursos de la aplicación. Los hilos son fundamentales para aprovechar al máximo los procesadores multinúcleo, mejorar el rendimiento y responder de forma más eficiente en aplicaciones que requieren multitarea. \n\nEste módulo agrupa los temas relacionados con la programación concurrente en Java, incluyendo Executor, Callable y Future, que simplifican la creación, gestión y control de hilos."
+  }
+}

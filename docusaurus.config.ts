@@ -9,7 +9,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true, 
   },
 
   url: 'https://arlemorales27.github.io',
