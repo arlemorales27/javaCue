@@ -1,4 +1,4 @@
-import { themes as prismThemes, themes } from 'prism-react-renderer';
+import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
@@ -77,12 +77,13 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',~
+      style: 'dark',
       copyright: `Copyright © ${new Date().getFullYear()} CUE Alexander von Humboldt.`,
     },
     prism: {
       additionalLanguages: ["java"],
-      theme: themes.oneDark
+      theme: prismThemes.github,
+      darkTheme: prismThemes.oneDark,
     },
   } satisfies Preset.ThemeConfig,
 };
