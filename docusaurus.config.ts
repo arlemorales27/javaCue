@@ -82,7 +82,7 @@ const config: Config = {
     },
     prism: {
       additionalLanguages: ["java"],
-      theme: prismThemes.github,
+      theme: prismThemes.oneLight,
       darkTheme: prismThemes.oneDark,
     },
   } satisfies Preset.ThemeConfig,
